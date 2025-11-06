@@ -1,0 +1,7 @@
+#!/bin/bash -eu
+
+log() { echo >&2 "[$(basename "$0")] $*"; }
+
+log "Linting..."
+ESLINT_USE_FLAT_CONFIG=false npx --no --package eslint -- eslint --cache . 2> >(grep -Ev 'ESLintRCWarning|--trace-warnings' >&2) "$@"
+log "Completed OK."

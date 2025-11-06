@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Smoking Browser",
+  "version": "1.0.0",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.example.com/*",
+        "*://*.facebook.com/*",
+        "*://*.x.com/*"
+      ],
+      "css": [
+        "fonts/inter-700.css"
+      ],
+      "js": [
+        "content-script.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "*://*.facebook.com/*",
+        "*://*.instagram.com/*",
+        "*://*.tiktok.com/*",
+        "*://*.x.com/*"
+      ],
+      "resources": [
+        "fonts/*",
+        "images/*"
+      ]
+    }
+  ]
+}

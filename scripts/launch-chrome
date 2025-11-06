@@ -1,0 +1,16 @@
+#!/bin/bash -eux
+set -o pipefail
+
+usrDataDir="$PWD/.tmp/user-data-dir"
+mkdir -p "$usrDataDir"
+
+chromeExe="${CHROME_BIN-}"
+if [[ -z "$chromeExe" ]]; then
+  chromeExe="/home/user/dev/bin/chromium-no-update"
+fi
+
+exec "$chromeExe" \
+     --auto-open-devtools-for-tabs \
+     --load-extension="$PWD/build" \
+     --user-data-dir="$usrDataDir" \
+     http://www.example.com

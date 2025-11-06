@@ -1,0 +1,18 @@
+#!/bin/bash -eux
+set -o pipefail
+
+log() { echo >&2 "[$(basename "$0")] $*"; }
+
+log "Cleaning..."
+rm -rf build
+mkdir -p build
+
+log "Importing fonts..."
+mkdir -p build/fonts/files
+cp node_modules/@fontsource/inter/700.css                           build/fonts/inter-700.css
+cp node_modules/@fontsource/inter/files/inter-latin-700-normal.woff build/fonts/files/
+
+log "Copying source files..."
+cp -r src/* build/
+
+log "Build completed OK."
