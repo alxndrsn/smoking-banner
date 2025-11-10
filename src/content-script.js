@@ -58,6 +58,7 @@ function _init() {
   `;
 
   const idx = Math.floor(Math.random()*messages.length);
+  const [ copyright, ...messageParts ] = messages[idx];
 
   const $contentWrapper = createElement('div', css`
     display: flex;
@@ -71,7 +72,7 @@ function _init() {
     align-items: center;
   `);
   const imgSrc = chrome.runtime.getURL(`images/${idx+1}.gif`);
-  const $img = createElement('img', { src:imgSrc }, css`
+  const $img = createElement('img', { src:imgSrc, title:`© ${copyright}` }, css`
     max-height: 25vh; 
   `);
   $imgContainer.appendChild($img);
@@ -87,7 +88,6 @@ function _init() {
     align-items: center;
     line-height: 1.2;
   `);
-  const [ copyright, ...messageParts ] = messages[idx];
   const longestLine = messageParts.reduce((max, curr) => Math.max(max, curr.length), 0);
   const fontSize = messageParts.length === 2 ? 9 : 6;
   const $msg = createElement('p', css`
