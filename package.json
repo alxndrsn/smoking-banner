@@ -6,7 +6,8 @@
     "test": "yarn lint"
   },
   "devDependencies": {
-    "eslint": "^9.38.0"
+    "eslint": "^9.38.0",
+    "web-ext": "^9.1.0"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8"
